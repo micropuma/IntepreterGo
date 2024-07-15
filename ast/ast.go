@@ -67,6 +67,11 @@ type InfixExpression struct {
 	Right Expression
 }
 
+type Boolean struct {
+	Token token.Token
+	Value bool
+}
+
 // fulfill interface
 func (l *LetStatement)statementNode() {}
 func (l *LetStatement)TokenLiteral() string { return l.Token.Literal }
@@ -169,3 +174,7 @@ func (il *InfixExpression) String() string {
 
 	return out.String()
 }
+
+func (b *Boolean) expressionNode()             {}
+func (b *Boolean) TokenLiteral() string        { return b.Token.Literal }
+func (b *Boolean) String() string              { return b.Token.Literal }
